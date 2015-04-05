@@ -1,4 +1,4 @@
-from __future__ import division, print_function
+from __future__ import division
 import numpy as np
 # Set of combinatoric functions used for various selection problems.
 
