@@ -36,7 +36,7 @@ def n_choose_k(n, k):
     The number of ways to choose k items from n items, equally, the number of
     ways to form k-subsets from a n-set"""
     if contain_neg_numbers([n, k]):
-        raise ValueError('n_choose_k not implemented for negative values')
+        raise ValueError('Function not implemented for negative values')
         
     if k > n:
         return 0
@@ -57,7 +57,7 @@ def number_of_injections(n, k):
     RETURNS:
     The number of injective maps from a k-set to a n-set"""
     if contain_neg_numbers([n, k]):
-        raise ValueError('number_of_injections not implemented for negative values')
+        raise ValueError('Function not implemented for negative values')
 
     if k > n:
         return 0
