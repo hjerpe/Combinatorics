@@ -5,7 +5,7 @@ import numpy as np
 
 def product_of_numbers_in_range(start_int, end_int):
     """Returns the product of all integer numbers between start_int and end_int.
-    Valid only when (end_int  >= start_int)
+    Valid only when (end_int >= start_int)
     """
     product = 1
     for number in xrange(start_int, end_int+1):
@@ -20,7 +20,7 @@ def n_choose_k(n, k):
     ARGS:
     n - Number of items to choose from
     k - Number of items to choose
-    Valid only when (n  >= k)
+    Valid only when (n >= k)
     RETURNS:
     The number of ways to choose k items from n items, equally, the number of
     ways to form k-subsets from a n-set"""
