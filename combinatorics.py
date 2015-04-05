@@ -4,9 +4,6 @@ import numpy as np
 
 def contain_neg_numbers(li_numbers):
     """Check if all numbers in li_number is non-negative"""
-    # for number in li_numbers:
-    #     if number < 0: return True
-    # return False
     return next((True for number in li_numbers if number < 0), False)
 
 
@@ -101,5 +98,4 @@ def number_of_surjections(n, k):
     for n_ind in xrange(2, n+1):
         for k_ind in xrange(2, n_ind):
             S[n_ind-1, k_ind-1] = calculate_S(n_ind-1, k_ind-1)
-
     return S[n-1, k-1]
