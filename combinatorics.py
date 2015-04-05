@@ -4,9 +4,10 @@ import numpy as np
 
 def contain_neg_numbers(li_numbers):
     """Check if all numbers in li_number is non-negative"""
-    for number in li_numbers:
-        if number < 0: return True
-    return False
+    # for number in li_numbers:
+    #     if number < 0: return True
+    # return False
+    return next((True for number in li_numbers if number < 0), False)
 
 
 def product_of_numbers_in_range(start_int, end_int):
@@ -21,7 +22,6 @@ def product_of_numbers_in_range(start_int, end_int):
     product = 1
     for number in xrange(start_int, end_int+1):
         product *= number
-        
     return product
 
     
