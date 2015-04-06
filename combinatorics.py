@@ -8,9 +8,7 @@ def contain_neg_numbers(li_numbers):
 
 
 def product_of_numbers_in_range(start_int, end_int):
-    """Returns the product of all integer numbers between start_int and end_int.
-    Valid only when (end_int >= start_int)
-    """
+    """Returns the product of all integer numbers between start_int and end_int."""
     if contain_neg_numbers([start_int,
                             end_int,
                             end_int - start_int]):
@@ -28,7 +26,6 @@ def n_choose_k(n, k):
     ARGS:
     n - Number of items to choose from
     k - Number of items to choose
-    Valid only when (n >= k)
     RETURNS:
     The number of ways to choose k items from n items, equally, the number of
     ways to form k-subsets from a n-set"""
@@ -44,13 +41,12 @@ def n_choose_k(n, k):
     
 def number_of_injections(n, k):
     """Returns the number of function injections from a set of k elements to a
-    set of n elements,
-    i.e. the number of injective functions f: X -> Y where |X| = k and |Y| = n.
+    set of n elements.
+    That is the number of injective functions f: X -> Y where |X| = k and |Y| = n.
     
     ARGS:
     n - The number of elements in the target set Y
     k - The number of elements in the domain set X
-    Valid only when (n >= k)
     RETURNS:
     The number of injective maps from a k-set to a n-set"""
     if contain_neg_numbers([n, k]):
@@ -65,27 +61,26 @@ def number_of_injections(n, k):
     
 def number_of_surjections(n, k):
     """Returns the number of function surjections from a set of n elements to a
-    set of k elements, also called The Stirling Number of the Second Kind,
-    i.e. the number of surjective functions f: X -> Y, where |X| = n and |Y| = k.
+    set of k elements, also called The Stirling Number of the Second Kind.
+    That is the number of surjective functions f: X -> Y, where |X| = n and |Y| = k.
     The calculated number is also equal to the number of partitions of a n-set
     into k parts.
     
     ARGS:
     n - The number of elements in the domain set X
     k - The number of elements in the target set Y
-    Valid only when (n >= k)
     RETURNS:
     The number of surjective maps from a n-set to a k-set"""
     
     def calculate_S(n, k):
-        """Helper method that returns the number S(n, k)"""
+        """Helper method that returns the number StirlingsII number S(n, k)"""
         if k == 0 or k == n:
             return 1
-        else:
+        else:n
             return S[n-1, k-1] + ((k+1) * S[n-1, k])
 
     if contain_neg_numbers([n, k]):
-        raise ValueError('number_of_surjections not implemented for negative values')
+        raise ValueError('Function not implemented for negative values')
         
     if k > n:
         return 0
