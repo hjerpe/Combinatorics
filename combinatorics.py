@@ -13,7 +13,6 @@ def product_of_numbers_in_range(start_int, end_int):
                             end_int,
                             end_int - start_int]):
         raise ValueError('Args must satisfy: args >= 0 and arg_1 <= arg_2')
-        
     return reduce(lambda x, y: x * y, xrange(start_int, end_int+1))
 
 
@@ -69,8 +68,8 @@ def number_of_surjections(n, k):
     RETURNS:
     The number of surjective maps from a n-set to a k-set"""
     
-    def calculate_S(n, k):
-        """Helper method that returns the number StirlingsII number S(n, k)"""
+    def stirling_second_kind(n, k):
+        """Helper method that returns the StirlingII number S(n, k)"""
         if k == 0 or k == n:
             return 1
         else:
@@ -78,7 +77,7 @@ def number_of_surjections(n, k):
 
     if contain_neg_numbers([n, k]):
         raise ValueError('Function not implemented for negative values')
-        
+    # Base cases    
     if k > n:
         return 0
     elif k == n or k == 0 or k == 1:
@@ -90,5 +89,5 @@ def number_of_surjections(n, k):
     for n_ind in xrange(2, n+1):
         k_hb = np.min((n_ind, k))
         for k_ind in xrange(2, k_hb):
-            S[n_ind-1, k_ind-1] = calculate_S(n_ind-1, k_ind-1)
+            S[n_ind-1, k_ind-1] = stirling_second_kind(n_ind-1, k_ind-1)
     return S[n-1, k-1]
