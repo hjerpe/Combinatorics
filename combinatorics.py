@@ -2,7 +2,7 @@ from __future__ import division
 import numpy as np
 # Set of combinatoric functions used for various selection problems.
 
-def contain_neg_numbers(list_numbers):
+def contain_neg_number(list_numbers):
     return next((True for number in list_numbers if number < 0), False)
 
 
