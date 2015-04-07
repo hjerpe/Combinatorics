@@ -52,17 +52,16 @@ def number_of_injections(n, k):
     return product_of_numbers_in_range(n-k+1, n)
 
 
-def number_of_surjections(n, k):
-    """Returns the number of function surjections from a set of n elements to a
-    set of k elements, also called The Stirling Number of the Second Kind.
-    That is the number of surjective functions f: X -> Y, where |X| = n and |Y| = k.
-    The calculated number is also equal to the number of partitions of a n-set
-    into k parts.
+def number_of_parts(n, k):
+    """Returns the number of partitions of an n-set X into k parts, the number
+    is also called the Stirling number of the second kind.
+    (A partition is a family of sets such that the union of all parts equals X
+    and such that each pair of parts are disjoint)
     ARGS:
-    n - The number of elements in the domain set X
-    k - The number of elements in the target set Y
+    n - The number of elements in the set X to be partitioned
+    k - The number of sets in the partitioning of X.
     RETURNS:
-    The number of surjective maps from a n-set to a k-set"""
+    The number of possible partitions of an n-set X into k parts"""
     
     def stirling_second_kind(n, k):
         """Helper method that returns the StirlingII number S(n, k)"""
@@ -87,3 +86,16 @@ def number_of_surjections(n, k):
         for k_ind in xrange(2, k_hb):
             S[n_ind-1, k_ind-1] = stirling_second_kind(n_ind-1, k_ind-1)
     return S[n-1, k-1]
+
+
+def number_of_surjections(n, k):
+    """Returns the number of surjections from an n-set X onto a k-set Y.
+    That is the number of surjective mappings f: X -> Y,
+    where |X| = n and |Y| = k.
+    ARGS:
+    n - Number of elements in the domain X
+    k - Number of elements in the set Y
+    RETURNS:
+    The number of surjective maps from an n-set X onto a k-set Y"""
+    k_factorial = product_of_numbers_in_range(1, k)
+    return k_factorial * number_of_parts(n, k)
