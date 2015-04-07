@@ -1,6 +1,5 @@
 from __future__ import division
 import numpy as np
-import math
 # Set of combinatoric functions used for various selection problems.
 
 def contain_neg_numbers(li_numbers):
