@@ -1,5 +1,6 @@
 from __future__ import division
 import numpy as np
+import math
 # Set of combinatoric functions used for various selection problems.
 
 def contain_neg_numbers(li_numbers):
@@ -13,13 +14,10 @@ def product_of_numbers_in_range(start_int, end_int):
                             end_int,
                             end_int - start_int]):
         raise ValueError('Args must satisfy: args >= 0 and arg_1 <= arg_2')
-    
-    product = 1
-    for number in xrange(start_int, end_int+1):
-        product *= number
-    return product
+        
+    return reduce(lambda x, y: x * y, xrange(start_int, end_int+1))
 
-    
+
 def n_choose_k(n, k):
     """Returns the number of ways to choose k items from a set of n items.
     
@@ -38,7 +36,7 @@ def n_choose_k(n, k):
         return 1
     return product_of_numbers_in_range(n-k+1, n) / product_of_numbers_in_range(1, k)
 
-    
+
 def number_of_injections(n, k):
     """Returns the number of function injections from a set of k elements to a
     set of n elements.
@@ -58,7 +56,7 @@ def number_of_injections(n, k):
         return 1
     return product_of_numbers_in_range(n-k+1, n)
 
-    
+
 def number_of_surjections(n, k):
     """Returns the number of function surjections from a set of n elements to a
     set of k elements, also called The Stirling Number of the Second Kind.
@@ -76,7 +74,7 @@ def number_of_surjections(n, k):
         """Helper method that returns the number StirlingsII number S(n, k)"""
         if k == 0 or k == n:
             return 1
-        else:n
+        else:
             return S[n-1, k-1] + ((k+1) * S[n-1, k])
 
     if contain_neg_numbers([n, k]):
@@ -91,6 +89,7 @@ def number_of_surjections(n, k):
     # Instance and fill memorizing table
     S = np.ones((n, k))
     for n_ind in xrange(2, n+1):
-        for k_ind in xrange(2, n_ind):
+        k_hb = np.min((n_ind, k))
+        for k_ind in xrange(2, k_hb):
             S[n_ind-1, k_ind-1] = calculate_S(n_ind-1, k_ind-1)
     return S[n-1, k-1]
