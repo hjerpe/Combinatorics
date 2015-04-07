@@ -17,7 +17,6 @@ def product_of_numbers_in_range(start_int, end_int):
 
 def n_choose_k(n, k):
     """Returns the number of ways to choose k items from a set of n items.
-    
     ARGS:
     n - Number of items to choose from
     k - Number of items to choose
@@ -26,7 +25,7 @@ def n_choose_k(n, k):
     ways to form k-subsets from a n-set"""
     if contain_neg_numbers([n, k]):
         raise ValueError('Function not implemented for negative values')
-        
+    # Base cases
     if k > n:
         return 0
     elif k == n or k == 0:
@@ -38,7 +37,6 @@ def number_of_injections(n, k):
     """Returns the number of function injections from a set of k elements to a
     set of n elements.
     That is the number of injective functions f: X -> Y where |X| = k and |Y| = n.
-    
     ARGS:
     n - The number of elements in the target set Y
     k - The number of elements in the domain set X
@@ -46,7 +44,7 @@ def number_of_injections(n, k):
     The number of injective maps from a k-set to a n-set"""
     if contain_neg_numbers([n, k]):
         raise ValueError('Function not implemented for negative values')
-
+    # Base cases
     if k > n:
         return 0
     elif k == n or k == 0:
@@ -60,7 +58,6 @@ def number_of_surjections(n, k):
     That is the number of surjective functions f: X -> Y, where |X| = n and |Y| = k.
     The calculated number is also equal to the number of partitions of a n-set
     into k parts.
-    
     ARGS:
     n - The number of elements in the domain set X
     k - The number of elements in the target set Y
