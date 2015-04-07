@@ -2,9 +2,8 @@ from __future__ import division
 import numpy as np
 # Set of combinatoric functions used for various selection problems.
 
-def contain_neg_numbers(li_numbers):
-    """Check if all numbers in li_number is non-negative"""
-    return next((True for number in li_numbers if number < 0), False)
+def contain_neg_numbers(list_numbers):
+    return next((True for number in list_numbers if number < 0), False)
 
 
 def product_of_numbers_in_range(start_int, end_int):
