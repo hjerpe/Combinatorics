@@ -16,14 +16,14 @@ def product_of_numbers_in_range(start_int, end_int):
 
 
 def n_choose_k(n, k):
-    """Returns the number of ways to choose k items from a set of n items.
+    """Returns the number of unordered selections of k items from a set of n
+    items without repetition.
+    
     ARGS:
-    n - Number of items to choose from
-    k - Number of items to choose
-    RETURNS:
-    The number of ways to choose k items from n items, equally, the number of
-    ways to form k-subsets from a n-set"""
-    if contain_neg_numbers([n, k]):
+    n - Number of items to choose from.
+    k - Number of items to choose.
+    """
+    if contain_neg_number([n, k]):
         raise ValueError('Function not implemented for negative values')
     # Base cases
     if k > n:
@@ -34,15 +34,14 @@ def n_choose_k(n, k):
 
 
 def number_of_injections(n, k):
-    """Returns the number of function injections from a set of k elements to a
-    set of n elements.
-    That is the number of injective functions f: X -> Y where |X| = k and |Y| = n.
+    """Returns the number of ordered selections of k items from a set of n items
+    without repetition.
+    
     ARGS:
-    n - The number of elements in the target set Y
-    k - The number of elements in the domain set X
-    RETURNS:
-    The number of injective maps from a k-set to a n-set"""
-    if contain_neg_numbers([n, k]):
+    n - Number of items to choose from.
+    k - Number of items to choose.
+    """
+    if contain_neg_number([n, k]):
         raise ValueError('Function not implemented for negative values')
     # Base cases
     if k > n:
@@ -53,15 +52,17 @@ def number_of_injections(n, k):
 
 
 def number_of_parts(n, k):
-    """Returns the number of partitions of an n-set X into k parts, the number
-    is also called the Stirling number of the second kind.
-    (A partition is a family of sets such that the union of all parts equals X
-    and such that each pair of parts are disjoint)
+    """Returns the number of partitions of an n-set X into k parts, the numbers
+    is also called the Stirling numbers of the second kind.
+
     ARGS:
-    n - The number of elements in the set X to be partitioned
+    n - The number of elements in the set X to be partitioned.
     k - The number of sets in the partitioning of X.
-    RETURNS:
-    The number of possible partitions of an n-set X into k parts"""
+    
+    COMMENTS:
+    A partition is a family of sets such that the union of all parts equals X
+    and such that each pair of parts are disjoint.
+    """
     
     def stirling_second_kind(n, k):
         """Helper method that returns the StirlingII number S(n, k)"""
@@ -70,7 +71,7 @@ def number_of_parts(n, k):
         else:
             return S[n-1, k-1] + ((k+1) * S[n-1, k])
 
-    if contain_neg_numbers([n, k]):
+    if contain_neg_number([n, k]):
         raise ValueError('Function not implemented for negative values')
     # Base cases    
     if k > n:
@@ -89,13 +90,11 @@ def number_of_parts(n, k):
 
 
 def number_of_surjections(n, k):
-    """Returns the number of surjections from an n-set X onto a k-set Y.
-    That is the number of surjective mappings f: X -> Y,
-    where |X| = n and |Y| = k.
+    """Returns the number of surjective functions from an n-set X onto a k-set Y.
+
     ARGS:
     n - Number of elements in the domain X
     k - Number of elements in the set Y
-    RETURNS:
-    The number of surjective mappings from an n-set X onto a k-set Y"""
+    """
     k_factorial = product_of_numbers_in_range(1, k)
     return k_factorial * number_of_parts(n, k)
