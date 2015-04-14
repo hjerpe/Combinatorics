@@ -7,11 +7,11 @@ def contain_neg_number(list_numbers):
 
 
 def product_of_numbers_in_range(start_int, end_int):
-    """Returns the product of all integer numbers between start_int and end_int."""
-    if contain_neg_numbers([start_int,
-                            end_int,
-                            end_int - start_int]):
-        raise ValueError('Args must satisfy: args >= 0 and arg_1 <= arg_2')
+    """Returns the product of all integer numbers between the two positive
+    integers start_int and end_int."""
+    if contain_neg_number([np.abs(end_int) - np.abs(start_int)]):
+        raise ValueError('arg_1 <= arg_2')
+        
     return reduce(lambda x, y: x * y, xrange(start_int, end_int+1))
 
 
@@ -96,6 +96,6 @@ def number_of_surjections(n, k):
     n - Number of elements in the domain X
     k - Number of elements in the set Y
     RETURNS:
-    The number of surjective maps from an n-set X onto a k-set Y"""
+    The number of surjective mappings from an n-set X onto a k-set Y"""
     k_factorial = product_of_numbers_in_range(1, k)
     return k_factorial * number_of_parts(n, k)
