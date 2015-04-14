@@ -60,8 +60,8 @@ def number_of_parts(n, k):
     k - The number of sets in the partitioning of X.
     
     COMMENTS:
-    A partition is a family of sets such that the union of all parts equals X
-    and such that each pair of parts are disjoint.
+    A partition of X is a family of sets such that the union of all parts equals
+    X and such that each pair of parts are disjoint.
     """
     
     def stirling_second_kind(n, k):
