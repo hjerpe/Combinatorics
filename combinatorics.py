@@ -90,5 +90,6 @@ def number_of_surjections(n, k):
     n - Number of elements in the domain X
     k - Number of elements in the set Y
     """
+
     k_factorial = product_of_numbers_in_range(1, k)
     return k_factorial * number_of_parts(n, k)
