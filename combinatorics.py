@@ -9,9 +9,7 @@ def contain_neg_number(list_numbers):
 def product_of_numbers_in_range(start_int, end_int):
     """Returns the product of all integer numbers between the two positive
     integers start_int and end_int."""
-    if contain_neg_number([np.abs(end_int) - np.abs(start_int)]):
-        raise ValueError('arg_1 <= arg_2')
-        
+    
     return reduce(lambda x, y: x * y, xrange(start_int, end_int+1))
 
 
@@ -23,8 +21,7 @@ def n_choose_k(n, k):
     n - Number of items to choose from.
     k - Number of items to choose.
     """
-    if contain_neg_number([n, k]):
-        raise ValueError('Function not implemented for negative values')
+
     # Base cases
     if k > n:
         return 0
@@ -41,8 +38,7 @@ def number_of_injections(n, k):
     n - Number of items to choose from.
     k - Number of items to choose.
     """
-    if contain_neg_number([n, k]):
-        raise ValueError('Function not implemented for negative values')
+
     # Base cases
     if k > n:
         return 0
@@ -71,8 +67,6 @@ def number_of_parts(n, k):
         else:
             return S[n-1, k-1] + ((k+1) * S[n-1, k])
 
-    if contain_neg_number([n, k]):
-        raise ValueError('Function not implemented for negative values')
     # Base cases    
     if k > n:
         return 0
