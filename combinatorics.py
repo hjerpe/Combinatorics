@@ -74,7 +74,7 @@ def number_of_parts(n, k):
         return 1
     # The numbers follow the recursion S(n, k) = S(n-1, k-1) + k * S(n-1, k)
     # with S(n, n) = S(n, 1) = 1
-    # Instance and fill memorizing table
+    # Instance and fill memoizing table
     S = np.ones((n, k))
     for n_ind in xrange(2, n+1):
         k_hb = np.min((n_ind, k))
