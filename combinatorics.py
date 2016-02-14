@@ -1,4 +1,5 @@
 from __future__ import division
+from itertools import permutations
 import numpy as np
 # Set of combinatoric functions used for various selection problems.
 
@@ -93,3 +94,52 @@ def number_of_surjections(n, k):
 
     k_factorial = product_of_numbers_in_range(1, k)
     return k_factorial * number_of_parts(n, k)
+
+
+def order_increment_array(arr_ord_numbers):
+    '''Mutates the array of numbers A = [a1,..,an] such that all numbers satisfy
+    a1 <= a2 <= .. <= an and sum(ai) = len(A). The increment is the smallest 
+    increment such that the total order is satisfied.
+    arr_ord_numbers must start at a valid configuration (a1<=a2<=..<=an).
+    
+    Value: bool
+    True if the input array is mutated and the increment is valid, and else 
+    False.'''
+
+
+    ind_dec = 0
+    ind_inc = 0
+    # Get increase and decrease indices starting from tail and going to head
+    for i in xrange(len(arr_ord_numbers)-1, 0, -1):
+        if arr_ord_numbers[i] > arr_ord_numbers[i-1]:
+            ind_dec = i
+            break
+    for j in xrange(ind_dec-1, -1, -1):
+        ind_inc = j
+        if arr_ord_numbers[ind_dec] - arr_ord_numbers[ind_inc] > 1:
+            break
+
+    # Check if relation a1 <= a2 <=... <= an holds after increment
+    if ind_inc == 0:
+        value_first_numbers = arr_ord_numbers[0]+1
+        last_value = 10-(value_first_numbers * (len(arr_ord_numbers)-1))
+
+        if value_first_numbers > last_value:
+            return False
+
+    arr_ord_numbers[ind_inc] += 1
+    arr_ord_numbers[ind_dec] -= 1
+    # Shortcut since we decrease from tail and start increase from tail-1
+    if arr_ord_numbers[ind_inc] + arr_ord_numbers[ind_dec] == 10: return True
+    
+    # (If no shortcut). Change all numbers to the left of the increased position
+    # to the smallest total order configuration (a1<=..<=an)
+
+    s = sum(arr_ord_numbers[0:ind_inc])
+    for i in range(ind_inc+1, len(arr_ord_numbers)):
+        s += arr_ord_numbers[ind_inc]
+        if i == len(arr_ord_numbers)-1:
+            arr_ord_numbers[i] = 10 - s
+        else:
+            arr_ord_numbers[i] = arr_ord_numbers[ind_inc]
+    return True
