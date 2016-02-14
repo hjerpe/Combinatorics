@@ -107,6 +107,7 @@ def order_increment_array(arr_ord_numbers):
     False.'''
 
 
+    sum_condition = len(arr_ord_numbers)
     ind_dec = 0
     ind_inc = 0
     # Get increase and decrease indices starting from tail and going to head
@@ -122,7 +123,8 @@ def order_increment_array(arr_ord_numbers):
     # Check if relation a1 <= a2 <=... <= an holds after increment
     if ind_inc == 0:
         value_first_numbers = arr_ord_numbers[0]+1
-        last_value = 10-(value_first_numbers * (len(arr_ord_numbers)-1))
+        last_value = sum_condition - \
+                (value_first_numbers * (len(arr_ord_numbers)-1))
 
         if value_first_numbers > last_value:
             return False
@@ -130,7 +132,8 @@ def order_increment_array(arr_ord_numbers):
     arr_ord_numbers[ind_inc] += 1
     arr_ord_numbers[ind_dec] -= 1
     # Shortcut since we decrease from tail and start increase from tail-1
-    if arr_ord_numbers[ind_inc] + arr_ord_numbers[ind_dec] == 10: return True
+    if arr_ord_numbers[ind_inc] + arr_ord_numbers[ind_dec] == sum_condition: 
+        return True
     
     # (If no shortcut). Change all numbers to the left of the increased position
     # to the smallest total order configuration (a1<=..<=an)
@@ -139,7 +142,7 @@ def order_increment_array(arr_ord_numbers):
     for i in range(ind_inc+1, len(arr_ord_numbers)):
         s += arr_ord_numbers[ind_inc]
         if i == len(arr_ord_numbers)-1:
-            arr_ord_numbers[i] = 10 - s
+            arr_ord_numbers[i] = sum_condition - s
         else:
             arr_ord_numbers[i] = arr_ord_numbers[ind_inc]
     return True
