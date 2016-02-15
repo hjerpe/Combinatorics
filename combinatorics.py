@@ -1,5 +1,5 @@
 from __future__ import division
-from itertools import permutations
+from itertools import permutations, combinations
 import numpy as np
 # Set of combinatoric functions used for various selection problems.
 
@@ -96,10 +96,10 @@ def number_of_surjections(n, k):
     return k_factorial * number_of_parts(n, k)
 
 
-def order_increment_array(arr_ord_numbers):
+def order_increment_array(arr_ord_numbers, sum_condition):
     '''Mutates the array of numbers A = [a1,..,an] such that all numbers satisfy
-    a1 <= a2 <= .. <= an and sum(ai) = len(A). The increment is the smallest 
-    increment such that the total order is satisfied.
+    a1 <= a2 <= .. <= an and sum(ai) = sum_condition. The increment is the 
+    smallest increment such that the total order is satisfied.
     arr_ord_numbers must start at a valid configuration (a1<=a2<=..<=an).
     
     Value: bool
@@ -107,7 +107,6 @@ def order_increment_array(arr_ord_numbers):
     False.'''
 
 
-    sum_condition = len(arr_ord_numbers)
     ind_dec = 0
     ind_inc = 0
     # Get increase and decrease indices starting from tail and going to head
@@ -146,3 +145,14 @@ def order_increment_array(arr_ord_numbers):
         else:
             arr_ord_numbers[i] = arr_ord_numbers[ind_inc]
     return True
+
+
+def ordered_selection_without_repetition(n, k):
+    '''Returns a generator returning the number of k selections of n elsements.
+    Each selection is returns as an tuple of length k with elements 0,1,..,n.'''
+
+
+    possible_permutations = combinations(xrange(n), k)
+    for perm in possible_permutations:
+        for p in permutations(perm):
+            yield p
