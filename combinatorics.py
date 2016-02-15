@@ -149,7 +149,8 @@ def order_increment_array(arr_ord_numbers, sum_condition):
 
 def ordered_selection_without_repetition(n, k):
     '''Returns a generator returning the number of k selections of n elements.
-    Each selection is returned as an tuple of length k with values in {0,1,..,n}.
+    Each selection is returned as an tuple of length k with values in 
+    {0,1,..,n-1}.
     '''
 
 
