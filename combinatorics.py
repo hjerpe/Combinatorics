@@ -148,7 +148,8 @@ def order_increment_array(arr_ord_numbers, sum_condition):
 
 
 def ordered_selection_without_repetition(n, k):
-    '''Yield all possible k-sized selections out of the n elements {0,..,n-1}.  
+    '''Yield all possible k-sized selections out of the n elements {0,..,n-1} 
+    without repetition.
     Each selection is represented as a tuple of length k with values in 
     {0,1,..,n-1}.
     '''
